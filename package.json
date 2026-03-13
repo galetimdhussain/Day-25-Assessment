@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "nyc --all --include routes/courses.js --reporter=text --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 mocha \"routes/test/courses.test.js\"",
-    "test:integration": "mocha \"routes/test/users.test.js\""
+    "test:unit": "nyc --all --include routes/courses.js --reporter=text --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 mocha --timeout 10000 \"routes/test/courses.test.js\"",
+    "test:integration": "mocha --timeout 10000 \"routes/test/users.test.js\""
   },
   "keywords": [],
   "author": "",

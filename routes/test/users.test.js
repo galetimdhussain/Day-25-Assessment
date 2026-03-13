@@ -5,6 +5,13 @@ const app = require("../../server");
 const expect = chai.expect;
 
 describe("Users API Integration Tests", () => {
+  it("GET / should confirm the app is live", async () => {
+    const res = await request(app).get("/");
+
+    expect(res.status).to.equal(200);
+    expect(res.text).to.equal("App is live");
+  });
+
   it("GET /api/users should return users array", async () => {
     const res = await request(app).get("/api/users");
 

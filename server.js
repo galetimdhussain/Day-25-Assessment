@@ -12,6 +12,10 @@ app.use(compression());
 app.use("/api/courses", courseRoutes);
 app.use("/api/users", userRoutes);
 
+app.get("/", (req, res) => {
+res.send("App is live");
+});
+
 app.get("/status", (req,res)=>{
 res.send("App is live");
 });

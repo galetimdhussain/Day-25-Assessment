@@ -65,8 +65,11 @@ Steps:
    - Start Command: npm start
 5. Create Web Service and wait for deploy to finish.
 6. Open your Render URL and test:
+   https://<your-service>.onrender.com/
+   Expected: App is live
+7. Also test:
    https://<your-service>.onrender.com/status
-7. Expected output:
+8. Expected output:
    App is live
 
 5. Important Project Notes
@@ -76,6 +79,8 @@ Steps:
   const PORT = process.env.PORT || 3000;
 - /status endpoint already returns:
   App is live
+- / (root) endpoint now also returns:
+  App is live
 - compression() middleware is already enabled
 
 6. If You Get Errors
@@ -84,3 +89,18 @@ Steps:
    npm install
 2. Re-test:
    npm test
+
+7. Render Issue: "Cannot GET /"
+If Render shows "Cannot GET /", do this:
+1. Make sure latest code is pushed to GitHub:
+   git add .
+   git commit -m "Fix root route for Render"
+   git push origin main
+2. In Render dashboard:
+   - Open your service
+   - Click Manual Deploy
+   - Click Deploy latest commit
+3. Wait until deploy is green (Live).
+4. Test again:
+   https://<your-service>.onrender.com/
+   https://<your-service>.onrender.com/status
