@@ -1,0 +1,86 @@
+SkillSphere API - Easy Step-by-Step Guide
+
+Use this folder in PowerShell:
+d:\HUSSAIN\HUSSAIN\WIPRO PRESKILL\Day-25 Assessment
+
+1. Install and Test
+1. Run:
+   npm install
+2. Run all tests:
+   npm test
+3. Expected:
+   - Unit tests pass
+   - Integration tests pass
+   - courses route coverage is 100%
+
+2. Run API on Local Machine
+1. Start server:
+   npm start
+2. In another PowerShell window, check health:
+   Invoke-WebRequest http://localhost:3000/status | Select-Object -ExpandProperty Content
+3. Expected output:
+   App is live
+
+3. Send Project to GitHub (Simple)
+Do these commands one by one:
+
+1. Check branch and remote:
+   git branch --show-current
+   git remote -v
+
+2. Keep branch name as main:
+   git branch -M main
+
+3. Stage and commit your latest changes:
+   git add .
+   git commit -m "Day 25 testing and deployment update"
+
+4. If you ALREADY have origin remote:
+   git push -u origin main
+
+5. If you DO NOT have origin remote, add it first:
+   git remote add origin https://github.com/<your-username>/<your-repo>.git
+   git push -u origin main
+
+6. Open your repo in browser:
+   https://github.com/<your-username>/<your-repo>
+
+Note:
+- If commit says "nothing to commit", skip commit and run push command.
+- If push asks login, complete GitHub login in the prompt/browser.
+
+4. Deploy on Render (Problem Statement Flow)
+Goal from problem statement:
+- Procfile present
+- PORT from environment
+- Public URL should return "App is live" at /status
+
+Steps:
+1. Go to https://render.com and login.
+2. Click New + -> Web Service.
+3. Connect your GitHub account and select your repo.
+4. Use these settings:
+   - Runtime: Node
+   - Build Command: npm install
+   - Start Command: npm start
+5. Create Web Service and wait for deploy to finish.
+6. Open your Render URL and test:
+   https://<your-service>.onrender.com/status
+7. Expected output:
+   App is live
+
+5. Important Project Notes
+- Procfile already added:
+  web: node server.js
+- server.js already uses:
+  const PORT = process.env.PORT || 3000;
+- /status endpoint already returns:
+  App is live
+- compression() middleware is already enabled
+
+6. If You Get Errors
+1. Reinstall:
+   Remove-Item -Recurse -Force node_modules
+   npm install
+2. Re-test:
+   npm test
